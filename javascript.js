@@ -1,7 +1,6 @@
 let display = document.getElementById("display");
-
 let content = '';
-display.value = 0;
+
 
 function displayValue(value) {
     content =  content + value; 
