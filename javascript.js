@@ -1,6 +1,8 @@
 let display = document.getElementById("display");
-let content = '';
+
 display.value = 0;
+let content = '';
+let lastResult = '';
 
 function displayValue(value) {
     if(value.match(/[+\-*\/]$/) && content.match(/[+\-*\/]$/)) {
@@ -17,8 +19,9 @@ function clearDisplay() {
 
 function resultDisplay() {
     try { 
-        content = eval(content);
-        display.value = content;
+        
+        lastResult = eval(content);
+        display.value = lastResult;
     } catch{
         display.value = 'Error';
         content = '';
