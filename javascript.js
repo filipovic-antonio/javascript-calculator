@@ -3,6 +3,9 @@ let content = '';
 display.value = 0;
 
 function displayValue(value) {
+    if(value.match(/[+\-*\/]$/) && content.match(/[+\-*\/]$/)) {
+    return;
+}
     content =  content + value; 
     display.value = content;   
 }
