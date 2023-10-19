@@ -4,12 +4,19 @@ display.value = 0;
 let content = '';
 let lastResult = '';
 
+//This is code for autocalculate (25+5+ (30+))
 function displayValue(value) {
-    if(value.match(/[+\-*\/]$/) && content.match(/[+\-*\/]$/)) {
-    return;
-}
-    content =  content + value; 
-    display.value = content;   
+    if(value.match(/[+\-*\/]$/)) {
+        if(content.match(/[+\-*\/]$/)) {
+            content = content.slice(0, -1);
+        }
+            lastResult = eval(content);
+            display.value = lastResult + value;
+            content = lastResult + value
+        } else {
+            content =  content + value; 
+            display.value = content;   
+    }
 }
 
 function clearDisplay() {
@@ -18,11 +25,10 @@ function clearDisplay() {
 }
 
 function resultDisplay() {
-    try { 
-        
+    try {    
         lastResult = eval(content);
         display.value = lastResult;
-    } catch{
+    } catch {
         display.value = 'Error';
         content = '';
     }
